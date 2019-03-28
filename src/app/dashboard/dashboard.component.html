@@ -1,0 +1,5 @@
+<p *ngIf="!checkIfLoggedIn(); else elseBlock">Please log in to see content</p>
+<ng-template #elseBlock>
+    <app-user-list [users]="userList"></app-user-list>
+    <app-edit-users (addUserEvent)="getUser($event)" (removeUserEvent)="popUser($event)"></app-edit-users>
+</ng-template>

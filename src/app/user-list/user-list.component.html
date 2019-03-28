@@ -1,0 +1,3 @@
+<app-user-list-item (click)='navigate(user)' *ngFor="let user of users" [user]="user" [textColor]="sendColor()"></app-user-list-item>
+
+<button (click)="toggleColor()">Toggle Colors</button>
