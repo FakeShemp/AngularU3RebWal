@@ -1,8 +1,22 @@
 <button *ngIf="checkIfLoggedIn(); else elseBlock" (click)="logout()">Log Out</button>
 
 <ng-template #elseBlock>
-    <p>Please log in</p>
-    <input [(ngModel)]="loggedUser" (keyup.enter)="login()">
-    <br>
-    <button (click)="login()">Login</button>
+    <form (ngSubmit)="login()" #userForm="ngForm">
+        <div>
+            <label for="email">Email</label>
+            <input required email type="email" id="email" [(ngModel)]="loggedUser" name="email" #email="ngModel">
+        </div>
+        <div [hidden]="email.valid || email.pristine">
+            Email is malformed
+        </div>
+        <div>
+            <label for="pass">Password</label>
+            <input required minlength="10" type="password" id="pass" [(ngModel)]="password" name="pass" #pass="ngModel">
+        </div>
+        <div [hidden]="pass.valid || pass.pristine">
+            Password needs 10 characters
+        </div>
+        <button type="submit">Login</button>
+        <button type="button">Create New User</button>
+    </form>
 </ng-template>

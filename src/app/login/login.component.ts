@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   @Input() loggedUser: string = '';
+  @Input() password: string = '';
 
   constructor(private authService: AuthServiceService, private router: Router) { }
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.loggedUser);
     this.loggedUser = '';
+    this.password = '';
     this.router.navigate(['/dashboard'])
   }
 
