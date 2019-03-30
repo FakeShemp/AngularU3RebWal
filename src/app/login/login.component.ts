@@ -22,10 +22,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authService.login(this.loggedUser);
-    this.loggedUser = '';
-    this.password = '';
-    this.router.navigate(['/dashboard'])
+    this.authService.login(this.loggedUser, this.password);
   }
 
   logout() {

@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
 
-  @Input() users: string[];
+  @Input() users: Object[];
   toggle: boolean = false;
   
   constructor(private router: Router) {
@@ -36,6 +36,6 @@ export class UserListComponent implements OnInit {
   }
 
   navigate(user) {
-    this.router.navigate(['/user', user]);
+    this.router.navigate(['/user', user.id]);
   }
 }

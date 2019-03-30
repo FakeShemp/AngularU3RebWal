@@ -32,9 +32,17 @@ export class AuthServiceService {
     return false;
   }
 
-  public login(user): void {
-    localStorage.setItem('user', user);
-    this.loggedUser = user;
+  public login(user, pass): void {
+    // forEach is dumb here but works since we only have two admins
+    this.admins.forEach(admin => {
+      if (admin.email === user) {
+        if (admin.password === pass) {
+          localStorage.setItem('user', user);
+          this.loggedUser = user;
+          this.router.navigate(['/dashboard'])
+        };
+      }
+    });
   }
 
   public logout(): void {
