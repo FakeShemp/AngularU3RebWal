@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UsersService } from '../users.service'
+/* Displays information about a single user */
 
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UsersService } from '../users.service'
 
 @Component({
   selector: 'app-single-user',
@@ -12,7 +13,7 @@ export class SingleUserComponent implements OnInit {
 
   user: Object;
 
-  constructor(private route: ActivatedRoute, private router: Router, private usersService: UsersService) { }
+  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -20,6 +21,7 @@ export class SingleUserComponent implements OnInit {
     })
   }
 
+  // Gets information about user from id via usersService
   getUser(id) {
     this.usersService.getUser(id)
       .subscribe(user => this.user = user);

@@ -23,11 +23,13 @@ export class DashboardComponent implements OnInit {
     this.getUsers();
   }
 
+  // Saves users to userList
   getUsers() {
     this.usersService.getUsers()
       .subscribe(users => this.userList = users);
   }
 
+  // Check if user is logged in via authService
   checkIfLoggedIn() {
     return this.authService.checkIfLoggedIn();
   }

@@ -1,5 +1,7 @@
+/* Service that handles authentication (login/logout) */
+
 import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
+import { Router } from '@angular/router';
 import { AdminFull } from './models/admin-full.model'
 
 @Injectable({
@@ -25,6 +27,7 @@ export class AuthServiceService {
     this.loggedUser = undefined;
   }
 
+  // Checks localStorage for user login info, returns result
   checkIfLoggedIn(): boolean {
     if (localStorage.getItem('user')) {
       return true;
@@ -32,6 +35,7 @@ export class AuthServiceService {
     return false;
   }
 
+  // Checks if login info is in admins and logs in if it is
   public login(user, pass): void {
     // forEach is dumb here but works since we only have two admins
     this.admins.forEach(admin => {
@@ -45,6 +49,7 @@ export class AuthServiceService {
     });
   }
 
+  // Clear user login info
   public logout(): void {
     localStorage.clear();
     this.loggedUser = undefined;

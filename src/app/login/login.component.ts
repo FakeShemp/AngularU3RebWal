@@ -1,6 +1,7 @@
+/* This component handles login/logout functionality */
+
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service'
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,21 +13,23 @@ export class LoginComponent implements OnInit {
   @Input() loggedUser: string = '';
   @Input() password: string = '';
 
-  constructor(private authService: AuthServiceService, private router: Router) { }
+  constructor(private authService: AuthServiceService) { }
 
   ngOnInit() {
   }
 
+  // Checks if logged in via authService
   checkIfLoggedIn() {
     return this.authService.checkIfLoggedIn();
   }
 
+  // Communicates with authService to log user in
   login() {
     this.authService.login(this.loggedUser, this.password);
   }
 
+  // Communicates with authService to log user out
   logout() {
     this.authService.logout();
   }
-
 }

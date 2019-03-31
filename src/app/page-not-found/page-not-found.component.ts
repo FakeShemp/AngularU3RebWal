@@ -1,3 +1,8 @@
+/* 
+If a URL is not found, this displays a message telling 
+the user so. 
+*/
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,5 +16,4 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

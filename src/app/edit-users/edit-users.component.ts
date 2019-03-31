@@ -15,7 +15,7 @@ export class EditUsersComponent implements OnInit {
   @Output() removeUserEvent = new EventEmitter<void>();
 
   @Input() name = '';
-  
+
   constructor() { }
 
   ngOnInit() {

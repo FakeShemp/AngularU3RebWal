@@ -1,3 +1,5 @@
+/* Navigation component used on all pages */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
